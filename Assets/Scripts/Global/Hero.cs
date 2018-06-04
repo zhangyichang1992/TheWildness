@@ -11,6 +11,8 @@ namespace Assets.Scripts.Global
     /// </summary>
     public static class Hero
     {
+        public static HeroRole Role;
+
         #region 战斗属性
         /// <summary>
         /// 血量
@@ -104,6 +106,25 @@ namespace Assets.Scripts.Global
         /// </summary>
         public static float ExtraManaCostValue;
 
+        #endregion
+
+        #region 临时属性 战斗结束后会减去这些属性
+        /// <summary>
+        /// 临时物理攻击
+        /// </summary>
+        public static float TempPhysicalAttack;
+        /// <summary>
+        /// 临时魔法攻击
+        /// </summary>
+        public static float TempMagicAttack;
+        /// <summary>
+        /// 临时物理防御
+        /// </summary>
+        public static float TempPhysicalArmor;
+        /// <summary>
+        /// 临时魔法防御
+        /// </summary>
+        public static float TempMagicArmor;
         #endregion
 
         /// <summary>

@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Assets.Scripts.Buffs
+namespace Assets.Scripts.Props
 {
-    public class Debuff
+    public class BaseProp
     {
         public string Name;
-        public BuffType Type;
-        public BuffEffectWay EffectWay;
+        public PropType Type;
+        public Action Gains;
     }
 }

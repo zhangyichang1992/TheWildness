@@ -5,19 +5,19 @@ using System.Text;
 
 namespace Assets.Scripts.Enums
 {
-    /// <summary>
-    /// 职业
-    /// </summary>
-    public enum HeroRole
+    public enum BuffEffectWay
     {
-        Assassin,
         /// <summary>
-        /// 元素法师
+        /// 按次生效
         /// </summary>
-        ElementalMage,
+        Time,
         /// <summary>
-        /// 无畏战神
+        /// 回合生效
         /// </summary>
-        FearlessWarrior,
+        Round,
+        /// <summary>
+        /// 持久
+        /// </summary>
+        Constant
     }
 }
