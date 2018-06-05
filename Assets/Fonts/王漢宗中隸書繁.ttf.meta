@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: e1813bd0cf3ac9f41805effe31bb616a
+timeCreated: 1528187124
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: HanWangLiSuMedium
+  fontNames:
+  - HanWangLiSuMedium
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
