@@ -10,6 +10,13 @@ namespace Assets.Scripts.Enums
     /// </summary>
     public enum HeroRole
     {
+        /// <summary>
+        /// 未选择
+        /// </summary>
+        Default,
+        /// <summary>
+        /// 暗影刺客
+        /// </summary>
         Assassin,
         /// <summary>
         /// 元素法师

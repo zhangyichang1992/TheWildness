@@ -8,8 +8,9 @@ namespace Assets.Scripts.Props
 {
     public class BaseProp
     {
-        public string Name;
+        public string DisplayName;
         public PropType Type;
+        public PropName Name;
         public Action Gains;
     }
 }
