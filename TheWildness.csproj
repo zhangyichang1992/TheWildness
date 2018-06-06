@@ -96,18 +96,22 @@
     <Compile Include="Assets\Scripts\Enums\HeroRole.cs" />
     <Compile Include="Assets\Scripts\Enums\PropName.cs" />
     <Compile Include="Assets\Scripts\Enums\PropType.cs" />
+    <Compile Include="Assets\Scripts\Enums\SceneType.cs" />
     <Compile Include="Assets\Scripts\Enums\SkillType.cs" />
-    <Compile Include="Assets\Scripts\Global\BattleInfo.cs" />
+    <Compile Include="Assets\Scripts\Global\GameInfo.cs" />
     <Compile Include="Assets\Scripts\Global\Hero.cs" />
+    <Compile Include="Assets\Scripts\HeroInfo\BaseHero.cs" />
     <Compile Include="Assets\Scripts\Initers\PropIniter.cs" />
     <Compile Include="Assets\Scripts\Initers\RoleIniter.cs" />
-    <Compile Include="Assets\Scripts\HeroInfo\BaseHero.cs" />
+    <Compile Include="Assets\Scripts\Listener\KeyboardListener.cs" />
     <Compile Include="Assets\Scripts\Monster\BaseMonster.cs" />
+    <Compile Include="Assets\Scripts\Page\Props.cs" />
     <Compile Include="Assets\Scripts\Props\BaseProp.cs" />
     <Compile Include="Assets\Scripts\Skill\BaseSkill.cs" />
     <Compile Include="Assets\Scripts\UI\HeroSliderUpdater.cs" />
     <Compile Include="Assets\Scripts\UI\HeroStatusUpdater.cs" />
     <Compile Include="Assets\Scripts\UI\PropertyPanelUpdater.cs" />
+    <Compile Include="Assets\Scripts\UI\PropUpdater.cs" />
     <Compile Include="Assets\Scripts\Utility\ColorHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

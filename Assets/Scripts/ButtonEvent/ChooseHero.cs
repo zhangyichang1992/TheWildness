@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 public class ChooseHero : MonoBehaviour
 {
-    private HeroRole role = HeroRole.FearlessWarrior;
+    private HeroRole role;
     Button btnWarrior;
     Button btnMage;
     Button btnDefault;
@@ -23,10 +23,7 @@ public class ChooseHero : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            ReturnToMenu();
-        }
+        
     }
 
     void InitButtonEvents()
@@ -36,7 +33,7 @@ public class ChooseHero : MonoBehaviour
         btnWarrior = GameObject.Find("CanvasChooseHero/BtnWarrior").GetComponent<Button>();
         btnMage = GameObject.Find("CanvasChooseHero/BtnMage").GetComponent<Button>();
         btnDefault = GameObject.Find("CanvasChooseHero/BtnDefault").GetComponent<Button>();
-
+        role = HeroRole.FearlessWarrior;
         #region 选择战士      
         btnWarrior.onClick.AddListener(delegate ()
         {
@@ -81,12 +78,18 @@ public class ChooseHero : MonoBehaviour
             if (role == HeroRole.Default)
                 return;
 
+            //开始一场新的对局
+            GameInfo.New();
+            //初始化英雄
             Hero.New(role);
+
             Canvas canvasChooseHero = GameObject.Find("CanvasChooseHero").GetComponent<Canvas>();
             canvasChooseHero.transform.position = new Vector3(1800, 0, 0);
 
             Canvas canvasBattleMain = GameObject.Find("CanvasBattleMain").GetComponent<Canvas>();
             canvasBattleMain.transform.position = new Vector3(0, 0, 0);
+
+            GameInfo.CurrentScene = SceneType.BattleMain;
         });
         #endregion
 
@@ -98,6 +101,7 @@ public class ChooseHero : MonoBehaviour
 
     private void ReturnToMenu()
     {
+        GameInfo.CurrentScene = SceneType.Start;
         SceneManager.LoadScene("Start");
     }
 

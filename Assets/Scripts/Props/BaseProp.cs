@@ -12,5 +12,6 @@ namespace Assets.Scripts.Props
         public PropType Type;
         public PropName Name;
         public Action Gains;
+        public string Description;
     }
 }
