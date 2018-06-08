@@ -34,8 +34,7 @@ public class Function : MonoBehaviour
         btnSettings.onClick.AddListener(delegate ()
         {
             GameInfo.CurrentScene = SceneType.Settings;
-            canvasBattleMain.transform.position = new Vector3(1800, 0, 0);
-            canvasSettings.transform.position = new Vector3(0, 0, 0);
+            CameraSetter.SwichScene(GameInfo.CurrentScene);
         });
         #endregion
 
@@ -44,8 +43,17 @@ public class Function : MonoBehaviour
         btnBag.onClick.AddListener(delegate ()
         {
             GameInfo.CurrentScene = SceneType.Props;
-            canvasBattleMain.transform.position = new Vector3(1800, 0, 0);
-            canvasProps.transform.position = new Vector3(0, 0, 0);
+            CameraSetter.SwichScene(GameInfo.CurrentScene);
+        });
+        #endregion
+
+
+        #region 技能  
+        var btnSkills = GameObject.Find("CanvasBattleMain/BtnSkills").GetComponent<Button>();
+        btnSkills.onClick.AddListener(delegate ()
+        {
+            GameInfo.CurrentScene = SceneType.Skills;
+            CameraSetter.SwichScene(GameInfo.CurrentScene);
         });
         #endregion
     }

@@ -11,6 +11,7 @@ namespace Assets.Scripts.Enums
         ChooseHero,
         Settings,
         Props,
-        BattleMain
+        BattleMain,
+        Skills,
     }
 }

@@ -9,7 +9,6 @@ using UnityEngine.UI;
 
 public class ChooseHero : MonoBehaviour
 {
-    private HeroRole role;
     Button btnWarrior;
     Button btnMage;
     Button btnDefault;
@@ -17,13 +16,14 @@ public class ChooseHero : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        CameraSetter.Init();
         InitButtonEvents();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void InitButtonEvents()
@@ -33,11 +33,11 @@ public class ChooseHero : MonoBehaviour
         btnWarrior = GameObject.Find("CanvasChooseHero/BtnWarrior").GetComponent<Button>();
         btnMage = GameObject.Find("CanvasChooseHero/BtnMage").GetComponent<Button>();
         btnDefault = GameObject.Find("CanvasChooseHero/BtnDefault").GetComponent<Button>();
-        role = HeroRole.FearlessWarrior;
+        GameInfo.Role = HeroRole.FearlessWarrior;
         #region 选择战士      
         btnWarrior.onClick.AddListener(delegate ()
         {
-            role = HeroRole.FearlessWarrior;
+            GameInfo.Role = HeroRole.FearlessWarrior;
             txtDesc.text = "拥有强大的物理伤害能力与爆发能力\n也可以通过转职提升自身的防御能力";
             txtName.text = "无畏战神";
             txtName.color = ColorHelper.GetU3dColor(255, 0, 0);
@@ -50,7 +50,7 @@ public class ChooseHero : MonoBehaviour
         #region 选择法师     
         btnMage.onClick.AddListener(delegate ()
         {
-            role = HeroRole.ElementalMage;
+            GameInfo.Role = HeroRole.ElementalMage;
             txtDesc.text = "拥有强大的法术伤害能力与控制能力\n也可以通过转职提升自身的持续作战能力";
             txtName.text = "元素法师";
             txtName.color = ColorHelper.GetU3dColor(106, 68, 186);
@@ -62,7 +62,7 @@ public class ChooseHero : MonoBehaviour
         #region 选择默认       
         btnDefault.onClick.AddListener(delegate ()
         {
-            role = HeroRole.Default;
+            GameInfo.Role = HeroRole.Default;
             txtDesc.text = "";
             txtName.text = "正在研发中的角色！";
             txtName.color = ColorHelper.GetU3dColor(0, 0, 0);
@@ -75,21 +75,16 @@ public class ChooseHero : MonoBehaviour
         Button btnConfirm = GameObject.Find("CanvasChooseHero/BtnConfirm").GetComponent<Button>();
         btnConfirm.onClick.AddListener(delegate ()
         {
-            if (role == HeroRole.Default)
+            if (GameInfo.Role == HeroRole.Default)
                 return;
 
             //开始一场新的对局
             GameInfo.New();
             //初始化英雄
-            Hero.New(role);
-
-            Canvas canvasChooseHero = GameObject.Find("CanvasChooseHero").GetComponent<Canvas>();
-            canvasChooseHero.transform.position = new Vector3(1800, 0, 0);
-
-            Canvas canvasBattleMain = GameObject.Find("CanvasBattleMain").GetComponent<Canvas>();
-            canvasBattleMain.transform.position = new Vector3(0, 0, 0);
+            Hero.New(GameInfo.Role);
 
             GameInfo.CurrentScene = SceneType.BattleMain;
+            CameraSetter.SwichScene(GameInfo.CurrentScene);
         });
         #endregion
 

@@ -56,7 +56,6 @@ public class Settings : MonoBehaviour
     void ReturnToGame()
     {
         GameInfo.CurrentScene = SceneType.BattleMain;
-        canvasBattleMain.transform.position = new Vector3(0, 0, 0);
-        canvasSettings.transform.position = new Vector3(1800, 0, 0);
+        CameraSetter.SwichScene(GameInfo.CurrentScene);
     }
 }

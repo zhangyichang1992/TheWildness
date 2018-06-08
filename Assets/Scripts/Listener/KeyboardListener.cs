@@ -7,15 +7,9 @@ using UnityEngine.SceneManagement;
 
 public class KeyboardListener : MonoBehaviour
 {
-    Canvas canvasBattleMain;
-    Canvas canvasSettings;
-    Canvas canvasProps;
     // Use this for initialization
     void Start()
     {
-        canvasBattleMain = GameObject.Find("CanvasBattleMain").GetComponent<Canvas>();
-        canvasSettings = GameObject.Find("CanvasSettings").GetComponent<Canvas>();
-        canvasProps = GameObject.Find("CanvasProps").GetComponent<Canvas>();
     }
 
     // Update is called once per frame
@@ -49,31 +43,15 @@ public class KeyboardListener : MonoBehaviour
     void OpenSettings()
     {
         GameInfo.CurrentScene = SceneType.Settings;
-        canvasBattleMain.transform.position = new Vector3(1800, 0, 0);
-        canvasSettings.transform.position = new Vector3(0, 0, 0);
+        CameraSetter.SwichScene(GameInfo.CurrentScene);
     }
 
     /// <summary>
     /// 返回游戏战斗面板
     /// </summary>
     void ReturnToGame()
-    {
-       
-        canvasBattleMain.transform.position = new Vector3(0, 0, 0);
-        switch (GameInfo.CurrentScene)
-        {
-            case SceneType.Settings:
-                {
-                    canvasSettings.transform.position = new Vector3(1800, 0, 0);
-                    break;
-                }
-            case SceneType.Props:
-                {
-                    canvasProps.transform.position = new Vector3(1800, 0, 0);
-                    break;
-                }
-        }
-
+    {     
         GameInfo.CurrentScene = SceneType.BattleMain;
+        CameraSetter.SwichScene(GameInfo.CurrentScene);
     }
 }

@@ -22,7 +22,7 @@ namespace Assets.Scripts.UI
             var prop = GameInfo.ActivedProps.FirstOrDefault(p => p.Name == name);
             var x = (i % 12) * 100 - 550;
             var y = 290 - (i / 12) * 100;
-            var textures = Resources.LoadAll<Sprite>("Assets/Textures/Props");
+
             var txtDesc = GameObject.Find("CanvasProps/TextDesc").GetComponent<Text>();
 
             Button button = GameObject.Find("CanvasProps/Button").GetComponent<Button>();
