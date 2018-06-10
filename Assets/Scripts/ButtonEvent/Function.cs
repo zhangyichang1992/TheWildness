@@ -7,9 +7,7 @@ using UnityEngine.UI;
 
 public class Function : MonoBehaviour
 {
-    Canvas canvasBattleMain;
-    Canvas canvasSettings;
-    Canvas canvasProps;
+
     // Use this for initialization
     void Start()
     {
@@ -23,12 +21,6 @@ public class Function : MonoBehaviour
 
     void InitButtonEvents()
     {
-        #region canvas
-        canvasBattleMain = GameObject.Find("CanvasBattleMain").GetComponent<Canvas>();
-        canvasSettings = GameObject.Find("CanvasSettings").GetComponent<Canvas>();
-        canvasProps = GameObject.Find("CanvasProps").GetComponent<Canvas>();
-        #endregion
-
         #region 设置      
         var btnSettings = GameObject.Find("CanvasBattleMain/BtnSettings").GetComponent<Button>();
         btnSettings.onClick.AddListener(delegate ()
@@ -46,7 +38,6 @@ public class Function : MonoBehaviour
             CameraSetter.SwichScene(GameInfo.CurrentScene);
         });
         #endregion
-
 
         #region 技能  
         var btnSkills = GameObject.Find("CanvasBattleMain/BtnSkills").GetComponent<Button>();

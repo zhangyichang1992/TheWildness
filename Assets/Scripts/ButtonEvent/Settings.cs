@@ -8,8 +8,6 @@ using UnityEngine.UI;
 
 public class Settings : MonoBehaviour
 {
-    Canvas canvasBattleMain;
-    Canvas canvasSettings;
     // Use this for initialization
     void Start()
     {
@@ -23,11 +21,6 @@ public class Settings : MonoBehaviour
 
     void InitButtonEvents()
     {
-        #region canvas
-        canvasBattleMain = GameObject.Find("CanvasBattleMain").GetComponent<Canvas>();
-        canvasSettings = GameObject.Find("CanvasSettings").GetComponent<Canvas>();
-        #endregion
-
         #region 返回游戏
         Button btnReturnGame = GameObject.Find("CanvasSettings/BtnReturnGame").GetComponent<Button>();
         btnReturnGame.onClick.AddListener(delegate ()

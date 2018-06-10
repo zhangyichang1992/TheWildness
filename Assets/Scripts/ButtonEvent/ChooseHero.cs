@@ -78,13 +78,12 @@ public class ChooseHero : MonoBehaviour
             if (GameInfo.Role == HeroRole.Default)
                 return;
 
-            //开始一场新的对局
-            GameInfo.New();
-            //初始化英雄
-            Hero.New(GameInfo.Role);
-
+            BattleCanvasSetter.Init();
             GameInfo.CurrentScene = SceneType.BattleMain;
             CameraSetter.SwichScene(GameInfo.CurrentScene);
+
+            //开始一场新的对局
+            GameInfo.NewGame();         
         });
         #endregion
 

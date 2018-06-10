@@ -14,5 +14,17 @@ namespace Assets.Scripts.Utility
             var sprite = Resources.Load("Textures/Skills/" + name, typeof(Sprite)) as Sprite;
             return sprite;
         }
+
+        public static Sprite GetEventSprite(Enums.GameEventType type)
+        {
+            var sprite = Resources.Load("Textures/Events/" + type, typeof(Sprite)) as Sprite;
+            return sprite;
+        }
+
+        public static Sprite GetPropSprite(PropName name)
+        {
+            var sprite = Resources.Load("Textures/Props/" + name, typeof(Sprite)) as Sprite;
+            return sprite;
+        }
     }
 }

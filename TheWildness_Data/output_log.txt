@@ -2,33 +2,59 @@ Initialize engine version: 5.6.0f3 (497a0f351392)
 GfxDevice: creating device client; threaded=1
 Direct3D:
     Version:  Direct3D 11.0 [level 11.0]
-    Renderer: Intel(R) HD Graphics 630 (ID=0x5912)
-    Vendor:   Intel
-    VRAM:     1008 MB
-    Driver:   21.20.16.4481
+    Renderer: NVIDIA GeForce GTX 1050 (ID=0x1c81)
+    Vendor:   NVIDIA
+    VRAM:     1953 MB
+    Driver:   22.21.13.8494
 Begin MonoManager ReloadAssembly
-Platform assembly: E:\My\TheWildness\TheWildness_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading E:\My\TheWildness\TheWildness_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: E:\My\TheWildness\TheWildness_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading E:\My\TheWildness\TheWildness_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: E:\My\TheWildness\TheWildness_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading E:\My\TheWildness\TheWildness_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-Platform assembly: E:\My\TheWildness\TheWildness_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
-Loading E:\My\TheWildness\TheWildness_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-- Completed reload, in  0.018 seconds
-Platform assembly: E:\My\TheWildness\TheWildness_Data\Managed\System.Core.dll (this message is harmless)
-Platform assembly: E:\My\TheWildness\TheWildness_Data\Managed\System.dll (this message is harmless)
+Platform assembly: E:\U3d\TheWildness\TheWildness_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading E:\U3d\TheWildness\TheWildness_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: E:\U3d\TheWildness\TheWildness_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading E:\U3d\TheWildness\TheWildness_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: E:\U3d\TheWildness\TheWildness_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading E:\U3d\TheWildness\TheWildness_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: E:\U3d\TheWildness\TheWildness_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading E:\U3d\TheWildness\TheWildness_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+- Completed reload, in  0.014 seconds
+Platform assembly: E:\U3d\TheWildness\TheWildness_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: E:\U3d\TheWildness\TheWildness_Data\Managed\System.dll (this message is harmless)
 <RI> Initializing input.
 <RI> Input initialized.
-desktop: 1920x1200 59Hz; virtual: 3840x1200 at 0,0
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initialized touch support.
-UnloadTime: 3.572581 ms
+UnloadTime: 2.532907 ms
 Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 11.866623 ms
+UnloadTime: 3.890239 ms
 
-Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 1070.
-Total: 1.599077 ms (FindLiveObjects: 0.106150 ms CreateObjectMapping: 0.064167 ms MarkObjects: 1.417154 ms  DeleteObjects: 0.011263 ms)
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 1429.
+Total: 0.734699 ms (FindLiveObjects: 0.043803 ms CreateObjectMapping: 0.031003 ms MarkObjects: 0.655057 ms  DeleteObjects: 0.004550 ms)
 
-Setting up 2 worker threads for Enlighten.
-  Thread -> id: 47e0 -> priority: 1 
-  Thread -> id: 3a48 -> priority: 1 
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 9.087180 ms
+
+Unloading 93 unused Assets to reduce memory usage. Loaded Objects now: 360.
+Total: 1.408814 ms (FindLiveObjects: 0.089597 ms CreateObjectMapping: 0.045794 ms MarkObjects: 1.037055 ms  DeleteObjects: 0.234375 ms)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.717349 ms
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 360.
+Total: 1.098209 ms (FindLiveObjects: 0.044372 ms CreateObjectMapping: 0.037830 ms MarkObjects: 1.006052 ms  DeleteObjects: 0.008817 ms)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.683501 ms
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 360.
+Total: 0.981306 ms (FindLiveObjects: 0.031003 ms CreateObjectMapping: 0.035839 ms MarkObjects: 0.905077 ms  DeleteObjects: 0.008533 ms)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.649653 ms
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 360.
+Total: 1.001216 ms (FindLiveObjects: 0.032425 ms CreateObjectMapping: 0.036407 ms MarkObjects: 0.922143 ms  DeleteObjects: 0.009101 ms)
+
+Setting up 4 worker threads for Enlighten.
+  Thread -> id: f368 -> priority: 1 
+  Thread -> id: f3f8 -> priority: 1 
+  Thread -> id: d85c -> priority: 1 
+  Thread -> id: f0d8 -> priority: 1 

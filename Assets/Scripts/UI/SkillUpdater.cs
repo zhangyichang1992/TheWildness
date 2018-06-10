@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Enums;
+﻿using Assets.Scripts.Base;
+using Assets.Scripts.Enums;
 using Assets.Scripts.Global;
 using Assets.Scripts.Utility;
 using System;
@@ -56,11 +57,13 @@ namespace Assets.Scripts.UI
             skillName.text = skill.DisplayName;
 
             //修改技能消耗
-            Text skillCost = GameObject.Find("CanvasSkills/ScrollView/Viewport/Content/" + skill.DisplayName + "/TxtCost").GetComponent<Text>();
+            var skillCost = GameObject.Find("CanvasSkills/ScrollView/Viewport/Content/" + skill.DisplayName + "/TxtCost").GetComponent<Text>();
             skillCost.text = skill.Cost.ToString();
-            //如果技能消耗为0，则不显示
+            //如果技能消耗为0修改技能颜色
             if (skill.Cost == 0)
-                skillCost.gameObject.SetActive(false);
+                skillCost.color= ColorHelper.GetCostColor(true);
+            else
+                skillCost.color = ColorHelper.GetCostColor(false);
 
             //修改星级
             if (skill.Level < 3)
@@ -122,9 +125,23 @@ namespace Assets.Scripts.UI
         /// 升级已有技能时修改UI
         /// </summary>
         /// <param name="name"></param>
-        public static void UpgradeSkill(SkillName name)
+        public static void UpgradeSkill(BaseSkill skill)
         {
-
+            if (skill.Level == 3)
+            {
+                GameObject star3 = GameObject.Find("CanvasSkills/ScrollView/Viewport/Content/" + skill.DisplayName + "/ImgStar3");
+                star3.SetActive(true);
+            }
+            if (skill.Level == 2)
+            {
+                GameObject star2 = GameObject.Find("CanvasSkills/ScrollView/Viewport/Content/" + skill.DisplayName + "/ImgStar2");
+                star2.SetActive(true);
+            }
+            if (skill.Level == 1)
+            {
+                GameObject star1 = GameObject.Find("CanvasSkills/ScrollView/Viewport/Content/" + skill.DisplayName + "/ImgStar1");
+                star1.SetActive(true);
+            }
         }
 
         private static void RelocateButtons()

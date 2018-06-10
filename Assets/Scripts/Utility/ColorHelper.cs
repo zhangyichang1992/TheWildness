@@ -53,5 +53,24 @@ namespace Assets.Scripts.Utility
                 default: return GetNoneCardColor();
             }
         }
+
+        public static Color GetEventColor(Enums.GameEventType type)
+        {
+            if (type == Enums.GameEventType.ElitistMonster)
+                return new Color(62f / 255f, 138f / 255f, 227f / 255f, 255f / 255f);
+            if (type == Enums.GameEventType.BOSS)
+                return Color.red;
+            if (type == Enums.GameEventType.RareMonster)
+                return new Color(255f / 255f, 186f / 255f, 227f / 255f, 255f / 255f);
+
+            return Color.white;
+        }
+
+        public static Color GetCostColor(bool isZero)
+        {
+            if (isZero)
+                return Color.white;
+            return new Color(0f / 255f, 131f / 255f, 227f / 255f, 255f / 255f);
+        }
     }
 }

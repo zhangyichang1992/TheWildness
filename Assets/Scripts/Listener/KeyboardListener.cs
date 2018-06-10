@@ -21,8 +21,6 @@ public class KeyboardListener : MonoBehaviour
                 ReturnToMenu();
             else if (GameInfo.CurrentScene == SceneType.BattleMain)
                 OpenSettings();
-            else if (GameInfo.CurrentScene == SceneType.Start)
-                ;
             else
                 ReturnToGame();
         }

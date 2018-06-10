@@ -1,4 +1,7 @@
-﻿using Assets.Scripts.Enums;
+﻿using Assets.Scripts.Base;
+using Assets.Scripts.Enums;
+using Assets.Scripts.UI;
+using Assets.Scripts.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +33,18 @@ namespace Assets.Scripts.Global
         /// 等级
         /// </summary>
         public static int Level;
+        /// <summary>
+        /// 最大生命值
+        /// </summary>
+        public static float MaxHealth;
+        /// <summary>
+        /// 最大魔法
+        /// </summary>
+        public static float MaxMana;
+        /// <summary>
+        /// 最大经验
+        /// </summary>
+        public static float MaxExp;
         #endregion
 
         #region 基础属性
@@ -133,11 +148,59 @@ namespace Assets.Scripts.Global
         /// <param name="role"></param>
         public static void New(HeroRole role)
         {
+            BaseHeroRole baseRole = GameInfo.HeroRoleList.FirstOrDefault(x => x.Role == role);
+
+            Level = 0;
+            Exp = 0;
+            MaxHealth = Health = baseRole.BaseHealth;
+            MaxMana = Mana = baseRole.BaseMana;
+            MaxExp = NumberHelper.GetLevelExp(0);
+            PhysicalAttack = baseRole.BasePhysicalAttack;
+            MagicAttack = baseRole.BaseMagicAttack;
+            PhysicalArmor = baseRole.BasePhysicalArmor;
+            MagicArmor = baseRole.BaseMagicArmor;
+
+            FirePower = 0;
+            PurePower = 0;
+            ShadowPower = 0;
+            HolyPower = 0;
         }
 
+        /// <summary>
+        /// 升级
+        /// </summary>
         public static void LevelUp()
         {
+            BaseHeroRole baseRole = GameInfo.HeroRoleList.FirstOrDefault(x => x.Role == GameInfo.Role);
+
+            Level++;
+            //属性更新
+            MaxExp = NumberHelper.GetLevelExp(Level);
+            MaxHealth += baseRole.GrowthHealth;
+            MaxMana += baseRole.GrowthMana;
+            PhysicalAttack += baseRole.GrowthPhysicalAttack;
+            MagicAttack += baseRole.GrowthMagicAttack;
+            PhysicalArmor += baseRole.GrowthPhysicalArmor;
+            MagicArmor += baseRole.GrowthMagicArmor;
+
+            Health += NumberHelper.GetRound(MaxHealth * 0.2f);
+            Mana += NumberHelper.GetRound(MaxMana * 0.2f);
         }
 
+        /// <summary>
+        /// 获取经验值
+        /// </summary>
+        /// <param name="n"></param>
+        public static void GetExp(float n)
+        {
+            var currentExp = Exp + n;
+            if (currentExp >= MaxExp)
+            {
+                currentExp = currentExp - MaxExp;
+                LevelUp();
+                BattleUpdater.UpdateStageInfo();
+            }
+            PropertyPanelUpdater.Update();
+        }
     }
 }

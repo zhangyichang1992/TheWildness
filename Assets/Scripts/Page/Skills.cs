@@ -19,7 +19,7 @@ public class Skills : MonoBehaviour {
     void InitButtonEvents()
     {
         #region 返回游戏
-        Button btnReturnGame = GameObject.Find("CanvasProps/BtnReturnGame").GetComponent<Button>();
+        Button btnReturnGame = GameObject.Find("CanvasSkills/BtnReturnGame").GetComponent<Button>();
         btnReturnGame.onClick.AddListener(delegate ()
         {
             GameInfo.CurrentScene = SceneType.BattleMain;
