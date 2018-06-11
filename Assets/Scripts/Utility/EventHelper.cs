@@ -1,5 +1,7 @@
-﻿using Assets.Scripts.Enums;
+﻿using Assets.Scripts.Base;
+using Assets.Scripts.Enums;
 using Assets.Scripts.Global;
+using Assets.Scripts.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +11,11 @@ namespace Assets.Scripts.Utility
 {
     public static class EventHelper
     {
-        public static GameEventType GetRandomEvent()
+        /// <summary>
+        /// 获取随机事件类型
+        /// </summary>
+        /// <returns></returns>
+        public static GameEventType GetRandomGameEventType()
         {
             var random = NumberHelper.GetRandom(0, 100);
             if (random < 7)
@@ -27,6 +33,16 @@ namespace Assets.Scripts.Utility
 
             return GameEventType.NormalMonster;
 
+        }
+
+        /// <summary>
+        /// 从队列中生成一个随机事件
+        /// </summary>
+        /// <returns></returns>
+        public static void GenerateRandomEvent(BaseEvent e)
+        {
+            var index = NumberHelper.GetRandom(0, GameInfo.CurrentStageEvents.Count);
+            e = GameInfo.CurrentStageEvents[index].Clone();
         }
 
         public static void UpdateCurrentStageEvents()
@@ -52,14 +68,62 @@ namespace Assets.Scripts.Utility
         }
 
         /// <summary>
-        /// 向队列中添加一个新事件
+        /// 生成获取宝物对话框
         /// </summary>
-        /// <param name="type"></param>
-        public static void AddNewEvent(RandomEvent type)
+        /// <param name="e">事件本体</param>
+        /// <param name="name">宝物名称</param>
+        public static void GeneratePropEvent(BaseEvent e, PropName name)
         {
-            var e = GameInfo.EventList.FirstOrDefault(x => x.Name == type);
-            if (e != null)
-                GameInfo.CurrentStageEvents.Add(e.Clone());
+            var prop = GameInfo.ActivedProps.FirstOrDefault(x => x.Name == name);
+            e.Title = "获得宝物：" + prop.DisplayName;
+            e.Description = prop.Description;
+            e.Sprite = SpriteHelper.GetPropSprite(prop.Name);
+        }
+
+        public static void GenerateHotelEvent(BaseEvent e)
+        {
+            e.Title = "荒原酒馆";
+            e.Description = "花费金币休息有可能得到意外的惊喜！";
+            e.Choose1Name = "驻足";
+            e.Choose2Name = "大吃一顿";
+            e.Choose3Name = "住宿休息";
+            e.Choose1Desc = "恢复最大生命值和魔法值的20%";
+            e.Choose2Desc = "花费50金币\n恢复最大生命值和魔法值的50%";
+            e.Choose3Desc = "花费100金币\n恢复所有生命值和魔法值";
+            e.Sprite = SpriteHelper.GetEventSprite(e.Type);
+            e.Choose1 = () =>
+            {
+                Hero.Health = Math.Min(Hero.MaxHealth, Hero.Health + Hero.MaxHealth * 0.2f);
+                Hero.Mana = Math.Min(Hero.MaxMana, Hero.Mana + Hero.MaxMana * 0.2f);
+                PropertyPanelUpdater.Update();
+                GameInfo.NewStage();
+            };
+            e.Choose2 = () =>
+            {
+                if (GameInfo.Money < 50)
+                {
+                    BattleUpdater.UpdateMessage("别逗我，你太穷了");
+                    return;
+                }
+                GameInfo.Money -= 50;
+                Hero.RecoverHealth(Hero.MaxHealth * 0.5f);
+                Hero.RecoverMana(Hero.MaxMana * 0.5f);
+                BattleUpdater.UpdateStageInfo();
+                GameInfo.NewStage();
+            };
+            e.Choose3 = () =>
+            {
+                if (GameInfo.Money < 100)
+                {
+                    BattleUpdater.UpdateMessage("别逗我，你太穷了");
+                    return;
+                }
+                GameInfo.Money -= 100;
+                Hero.RecoverHealth(Hero.MaxHealth);
+                Hero.RecoverMana(Hero.MaxMana);
+                BattleUpdater.UpdateStageInfo();
+                GameInfo.NewStage();
+            };
         }
     }
 }

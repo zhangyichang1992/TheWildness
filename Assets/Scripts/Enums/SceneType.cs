@@ -13,5 +13,6 @@ namespace Assets.Scripts.Enums
         Props,
         BattleMain,
         Skills,
+        End,
     }
 }

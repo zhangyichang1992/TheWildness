@@ -7,6 +7,7 @@ namespace Assets.Scripts.Enums
 {
     public enum PropName
     {
+        None,
         生锈的铁锤,
         学徒木杖,
         新兵盾牌,

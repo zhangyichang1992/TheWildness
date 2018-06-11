@@ -7,6 +7,6 @@ namespace Assets.Scripts.Enums
 {
     public enum RandomEvent
     {
-        好心的村民,
+        苹果树,
     }
 }

@@ -28,6 +28,7 @@ namespace Assets.Scripts.UI
             Button btnEvent2 = GameObject.Find("SubCanvasChooseEvent/BtnEvent2").GetComponent<Button>();
             Button btnEvent3 = GameObject.Find("SubCanvasChooseEvent/BtnEvent3").GetComponent<Button>();
             Text text = GameObject.Find("SubCanvasChooseEvent/TxtDesc").GetComponent<Text>();
+            text.text = "";
 
             btnEvent1.image.sprite = SpriteHelper.GetEventSprite(t1);
             btnEvent2.image.sprite = SpriteHelper.GetEventSprite(t2);
@@ -103,6 +104,9 @@ namespace Assets.Scripts.UI
 
         private static void ChooseEvent(GameEventType type)
         {
+            var e = GameInfo.EventList.FirstOrDefault(x => x.Type == type).Clone();
+            GameInfo.OccurredEvents.Add(e);
+
             //GameInfo.NewStage();
             //return;
             switch (type)
@@ -116,8 +120,27 @@ namespace Assets.Scripts.UI
                     }
                 case GameEventType.Treasure:
                     {
-                        GameInfo.CurrentBattleScene = BattleSceneType.Reward;
-                        BattleCanvasSetter.SwitchBattleScene(BattleSceneType.Reward);
+                        GameInfo.CurrentBattleScene = BattleSceneType.EventDialog;
+                        var prop = PropHelper.GetRandomVisibleProp(PropType.Normal);
+                        EventHelper.GeneratePropEvent(e, prop.Name);
+                        DialogUpdater.Refresh(e);
+                        BattleCanvasSetter.SwitchBattleScene(BattleSceneType.EventDialog);
+                        break;
+                    }
+                case GameEventType.Hotel:
+                    {
+                        GameInfo.CurrentBattleScene = BattleSceneType.EventDialog;
+                        EventHelper.GenerateHotelEvent(e);
+                        DialogUpdater.Refresh(e);
+                        BattleCanvasSetter.SwitchBattleScene(BattleSceneType.EventDialog);
+                        break;
+                    }
+                case GameEventType.RandomEvent:
+                    {
+                        GameInfo.CurrentBattleScene = BattleSceneType.EventDialog;
+                        EventHelper.GenerateRandomEvent(e);
+                        DialogUpdater.Refresh(e);
+                        BattleCanvasSetter.SwitchBattleScene(BattleSceneType.EventDialog);
                         break;
                     }
                 //case GameEventType.
@@ -127,7 +150,7 @@ namespace Assets.Scripts.UI
                         BattleCanvasSetter.SwitchBattleScene(BattleSceneType.Battling);
                         break;
                     }
-            }          
+            }
         }
 
     }

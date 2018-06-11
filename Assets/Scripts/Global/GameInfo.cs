@@ -59,6 +59,7 @@ namespace Assets.Scripts.Global
         /// 持有金钱
         /// </summary>
         public static int Money;
+        public static GameEndType EndType;
 
         /// <summary>
         /// 开始一场新的对局
@@ -66,17 +67,19 @@ namespace Assets.Scripts.Global
         public static void NewGame()
         {
             CurrentScene = SceneType.BattleMain;
+            EndType = GameEndType.None;
             ActivedProps = new List<BaseProp>();
             GainedProps = new List<PropName>();
             ActivedSkills = new List<BaseSkill>();
             LearnedSkills = new List<BaseSkill>();
             EventList = new List<BaseEvent>();
             OccurredEvents = new List<BaseEvent>();
+            CurrentStageEvents = new List<BaseEvent>();
 
             HeroRoleList = new List<BaseHeroRole>();
             Day = 0;
             Money = 1200;
-
+            
             //初始化照相机信息
             CameraSetter.Init();
             //初始化宝物信息
@@ -89,8 +92,15 @@ namespace Assets.Scripts.Global
             HeroRoleIniter.Init();
             //初始化英雄属性
             Hero.New(Role);
+
+            Hero.Health = 40;
+            Hero.Mana = 1;
             //更新英雄属性面板
             PropertyPanelUpdater.Update();
+            //更新关卡信息面板
+            BattleUpdater.UpdateStageInfo();
+
+            BattleUpdater.UpdateMessage("欢迎来到荒原之城！");
 
             NewStage();
         }
@@ -100,12 +110,11 @@ namespace Assets.Scripts.Global
         /// </summary>
         public static void NewStage()
         {
-            BattleUpdater.UpdateMessage("请选择前进路线");
             Day++;
             BattleUpdater.UpdateStageInfo();
-            ShopUpdater.Refresh();
-            BattleCanvasSetter.SwitchBattleScene(BattleSceneType.Shop);
-            return;
+            //ShopUpdater.Refresh();
+            //BattleCanvasSetter.SwitchBattleScene(BattleSceneType.EventDialog);
+            //return;
             if (Day % 20 == 1)
             {
                 EventHelper.UpdateCurrentStageEvents();
@@ -114,9 +123,9 @@ namespace Assets.Scripts.Global
             //如果三天没有选择战斗事件，则强制生成三个普通怪物
             if (!ThreeDayNotInBattle())
             {
-                var stageType1 = EventHelper.GetRandomEvent();
-                var stageType2 = EventHelper.GetRandomEvent();
-                var stageType3 = EventHelper.GetRandomEvent();
+                var stageType1 = EventHelper.GetRandomGameEventType();
+                var stageType2 = EventHelper.GetRandomGameEventType();
+                var stageType3 = EventHelper.GetRandomGameEventType();
                 BattleUpdater.UpdateEvent(stageType1, stageType2, stageType3);
             }
             else
@@ -135,21 +144,21 @@ namespace Assets.Scripts.Global
             if (OccurredEvents.Count < 3)
                 return false;
 
-            if (OccurredEvents[EventList.Count - 1].Type != GameEventType.NormalMonster &&
-               OccurredEvents[EventList.Count - 1].Type != GameEventType.RareMonster &&
-               OccurredEvents[EventList.Count - 1].Type != GameEventType.ElitistMonster &&
-               OccurredEvents[EventList.Count - 1].Type != GameEventType.BOSS)
+            if (OccurredEvents[OccurredEvents.Count - 1].Type != GameEventType.NormalMonster &&
+               OccurredEvents[OccurredEvents.Count - 1].Type != GameEventType.RareMonster &&
+               OccurredEvents[OccurredEvents.Count - 1].Type != GameEventType.ElitistMonster &&
+               OccurredEvents[OccurredEvents.Count - 1].Type != GameEventType.BOSS)
             {
 
-                if (OccurredEvents[EventList.Count - 2].Type != GameEventType.NormalMonster &&
-                   OccurredEvents[EventList.Count - 2].Type != GameEventType.RareMonster &&
-                   OccurredEvents[EventList.Count - 2].Type != GameEventType.ElitistMonster &&
-                   OccurredEvents[EventList.Count - 2].Type != GameEventType.BOSS)
+                if (OccurredEvents[OccurredEvents.Count - 2].Type != GameEventType.NormalMonster &&
+                   OccurredEvents[OccurredEvents.Count - 2].Type != GameEventType.RareMonster &&
+                   OccurredEvents[OccurredEvents.Count - 2].Type != GameEventType.ElitistMonster &&
+                   OccurredEvents[OccurredEvents.Count - 2].Type != GameEventType.BOSS)
                 {
-                    if (OccurredEvents[EventList.Count - 3].Type != GameEventType.NormalMonster &&
-                      OccurredEvents[EventList.Count - 3].Type != GameEventType.RareMonster &&
-                      OccurredEvents[EventList.Count - 3].Type != GameEventType.ElitistMonster &&
-                      OccurredEvents[EventList.Count - 3].Type != GameEventType.BOSS)
+                    if (OccurredEvents[OccurredEvents.Count - 3].Type != GameEventType.NormalMonster &&
+                      OccurredEvents[OccurredEvents.Count - 3].Type != GameEventType.RareMonster &&
+                      OccurredEvents[OccurredEvents.Count - 3].Type != GameEventType.ElitistMonster &&
+                      OccurredEvents[OccurredEvents.Count - 3].Type != GameEventType.BOSS)
                     {
                         return true;
                     }

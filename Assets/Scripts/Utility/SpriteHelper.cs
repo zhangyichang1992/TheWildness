@@ -21,6 +21,12 @@ namespace Assets.Scripts.Utility
             return sprite;
         }
 
+        public static Sprite GetRandomEventSprite(Enums.RandomEvent type)
+        {
+            var sprite = Resources.Load("Textures/RandomEvents/" + type, typeof(Sprite)) as Sprite;
+            return sprite;
+        }
+
         public static Sprite GetPropSprite(PropName name)
         {
             var sprite = Resources.Load("Textures/Props/" + name, typeof(Sprite)) as Sprite;

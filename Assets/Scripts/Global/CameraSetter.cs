@@ -20,6 +20,7 @@ namespace Assets.Scripts.Global
             SceneInfoList.Add(new SceneInfo(SceneType.Props, 1800, -1800, -10));
             SceneInfoList.Add(new SceneInfo(SceneType.Settings, 1800, -900, -10));
             SceneInfoList.Add(new SceneInfo(SceneType.Skills, 0, -900, -10));
+            SceneInfoList.Add(new SceneInfo(SceneType.End, 0, 900, -10));
         }
 
         public static void SwichScene(SceneType sceneType)

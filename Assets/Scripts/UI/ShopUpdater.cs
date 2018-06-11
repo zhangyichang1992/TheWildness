@@ -95,6 +95,7 @@ namespace Assets.Scripts.UI
                         GameInfo.Money -= Convert.ToInt32(Math.Round((randomProp.Price * ratio)));
                         GameInfo.GainProp(randomProp.Name);
                         BattleUpdater.UpdateStageInfo();
+                        BattleUpdater.UpdateMessage("获得宝物：" + randomProp.DisplayName);
                         GameInfo.NewStage();
                     });
                 }
@@ -181,6 +182,7 @@ namespace Assets.Scripts.UI
                         GameInfo.Money -= Convert.ToInt32(price1);
                         BattleUpdater.UpdateStageInfo();
                         GameInfo.GainSkill(skill1.Name);
+                        
                         GameInfo.NewStage();
                     });
                 }

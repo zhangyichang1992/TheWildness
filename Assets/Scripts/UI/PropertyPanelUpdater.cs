@@ -10,6 +10,9 @@ namespace Assets.Scripts.UI
 {
     public static  class PropertyPanelUpdater
     {
+        /// <summary>
+        /// 刷新人物状态
+        /// </summary>
         public static void Update()
         {
             var txtPhysicalAttack= GameObject.Find("CanvasBattleMain/ImgProperty/TxtPhysicalAttack").GetComponent<Text>();

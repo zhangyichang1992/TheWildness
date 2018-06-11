@@ -202,5 +202,26 @@ namespace Assets.Scripts.Global
             }
             PropertyPanelUpdater.Update();
         }
+
+        public static void RecoverHealth(float n)
+        {
+            Health = Math.Min(MaxHealth, Health + n);
+            //死亡
+            if (Health < 1)
+            {
+                GameInfo.EndType = GameEndType.死亡;
+
+                return;
+            }
+
+            PropertyPanelUpdater.Update();
+        }
+
+        public static void RecoverMana(float n)
+        {
+            Mana = Math.Min(MaxMana, Mana + n);
+            Mana = Mana < 0 ? 0 : Mana;
+            PropertyPanelUpdater.Update();
+        }
     }
 }
