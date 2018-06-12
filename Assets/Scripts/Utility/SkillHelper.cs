@@ -14,5 +14,16 @@ namespace Assets.Scripts.Utility
             var index = NumberHelper.GetRandom(0, GameInfo.ActivedSkills.Count);
             return GameInfo.ActivedSkills[index];
         }
+
+        public static string UpgradeRandomSkill()
+        {
+            var skills = GameInfo.LearnedSkills.Where(x => x.Level != 3).ToList();
+            if (skills.Count == 0)
+                return string.Empty;
+            var index = NumberHelper.GetRandom(0, skills.Count);
+            skills[index].Level++;
+            return skills[index].DisplayName;
+        }
+
     }
 }

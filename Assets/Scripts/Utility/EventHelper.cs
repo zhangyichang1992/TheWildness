@@ -39,10 +39,17 @@ namespace Assets.Scripts.Utility
         /// 从队列中生成一个随机事件
         /// </summary>
         /// <returns></returns>
-        public static void GenerateRandomEvent(BaseEvent e)
+        public static BaseEvent GenerateRandomEvent()
         {
+            if (GameInfo.CurrentStageEvents.Count == 0)
+            {
+                return GameInfo.EventList.FirstOrDefault(x => x.Type == GameEventType.Shop).Clone();
+            }
+
             var index = NumberHelper.GetRandom(0, GameInfo.CurrentStageEvents.Count);
-            e = GameInfo.CurrentStageEvents[index].Clone();
+            var e = GameInfo.CurrentStageEvents[index].Clone();
+            GameInfo.CurrentStageEvents.RemoveAt(index);
+            return e;
         }
 
         public static void UpdateCurrentStageEvents()
@@ -60,7 +67,7 @@ namespace Assets.Scripts.Utility
             //添加新事件
             foreach (var e in GameInfo.EventList)
             {
-                if (e.MinStage == GameInfo.Day - 1)
+                if (e.MinStage == GameInfo.Day)
                 {
                     GameInfo.CurrentStageEvents.Add(e.Clone());
                 }

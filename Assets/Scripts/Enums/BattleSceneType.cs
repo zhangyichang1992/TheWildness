@@ -23,6 +23,8 @@ namespace Assets.Scripts.Enums
         //选择天赋
         ChooseAbility,
         //商店
-        Shop
+        Shop,
+        //信息通知
+        Message
     }
 }

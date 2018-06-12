@@ -14,6 +14,7 @@ namespace Assets.Scripts.Global
         static GameObject Shop;
         static GameObject Upgrade;
         static GameObject Dialog;
+        static GameObject Message;
         public static void Init()
         {
             Battling = GameObject.Find("SubCanvasBattling");
@@ -21,6 +22,7 @@ namespace Assets.Scripts.Global
             Shop = GameObject.Find("SubCanvasShop");
             Upgrade = GameObject.Find("SubCanvasUpgrade");
             Dialog = GameObject.Find("SubCanvasDialog");
+            Message = GameObject.Find("SubCanvasMessage");
         }
 
         public static void SwitchBattleScene(BattleSceneType type)
@@ -30,6 +32,7 @@ namespace Assets.Scripts.Global
             Shop.transform.position = new Vector3(1800, 1800, 0);
             Upgrade.transform.position = new Vector3(1800, 1800, 0);
             Dialog.transform.position=new Vector3(1800, 1800, 0);
+            Message.transform.position = new Vector3(1800, 1800, 0);
             switch (type)
             {
                 case BattleSceneType.Battling:
@@ -55,6 +58,11 @@ namespace Assets.Scripts.Global
                 case BattleSceneType.EventDialog:
                     {
                         Dialog.transform.position = new Vector3(1800, 0, 0);
+                        break;
+                    }
+                case BattleSceneType.Message:
+                    {
+                        Message.transform.position = new Vector3(1800, 0, 0);
                         break;
                     }
             }

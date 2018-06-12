@@ -199,5 +199,15 @@ namespace Assets.Scripts.Global
                 BattleUpdater.UpdateMessage("技能 " + skill.DisplayName + " 提升至" + skill.Level.ToString() + "级");
             }
         }
+
+        /// <summary>
+        /// 游戏结束
+        /// </summary>
+        /// <param name="type"></param>
+        public static void End()
+        {
+            EndPageUpdater.Update(EndType);
+            CameraSetter.SwichScene(SceneType.End);
+        }
     }
 }

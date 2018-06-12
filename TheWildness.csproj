@@ -121,13 +121,17 @@
     <Compile Include="Assets\Scripts\Initers\SkillIniter.cs" />
     <Compile Include="Assets\Scripts\Listener\KeyboardListener.cs" />
     <Compile Include="Assets\Scripts\Page\Battle.cs" />
+    <Compile Include="Assets\Scripts\Page\End.cs" />
+    <Compile Include="Assets\Scripts\Page\MessagePage.cs" />
     <Compile Include="Assets\Scripts\Page\Props.cs" />
     <Compile Include="Assets\Scripts\Page\Shop.cs" />
     <Compile Include="Assets\Scripts\Page\Skills.cs" />
     <Compile Include="Assets\Scripts\UI\BattleUpdater.cs" />
     <Compile Include="Assets\Scripts\UI\DialogUpdater.cs" />
+    <Compile Include="Assets\Scripts\UI\EndPageUpdater.cs" />
     <Compile Include="Assets\Scripts\UI\HeroSliderUpdater.cs" />
     <Compile Include="Assets\Scripts\UI\HeroStatusUpdater.cs" />
+    <Compile Include="Assets\Scripts\UI\MessagePageUpdater.cs" />
     <Compile Include="Assets\Scripts\UI\PropUpdater.cs" />
     <Compile Include="Assets\Scripts\UI\PropertyPanelUpdater.cs" />
     <Compile Include="Assets\Scripts\UI\ShopUpdater.cs" />

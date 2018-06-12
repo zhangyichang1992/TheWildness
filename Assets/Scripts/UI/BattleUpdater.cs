@@ -122,6 +122,7 @@ namespace Assets.Scripts.UI
                     {
                         GameInfo.CurrentBattleScene = BattleSceneType.EventDialog;
                         var prop = PropHelper.GetRandomVisibleProp(PropType.Normal);
+                        GameInfo.GainProp(prop.Name);
                         EventHelper.GeneratePropEvent(e, prop.Name);
                         DialogUpdater.Refresh(e);
                         BattleCanvasSetter.SwitchBattleScene(BattleSceneType.EventDialog);
@@ -138,9 +139,13 @@ namespace Assets.Scripts.UI
                 case GameEventType.RandomEvent:
                     {
                         GameInfo.CurrentBattleScene = BattleSceneType.EventDialog;
-                        EventHelper.GenerateRandomEvent(e);
-                        DialogUpdater.Refresh(e);
-                        BattleCanvasSetter.SwitchBattleScene(BattleSceneType.EventDialog);
+                        var randomE = EventHelper.GenerateRandomEvent();
+                        DialogUpdater.Refresh(randomE);
+                        //如果队列中没有可用事件，则直接触发商店事件
+                        if (randomE.Type == GameEventType.RandomEvent)
+                            BattleCanvasSetter.SwitchBattleScene(BattleSceneType.EventDialog);
+                        else
+                            BattleCanvasSetter.SwitchBattleScene(BattleSceneType.Shop);
                         break;
                     }
                 //case GameEventType.

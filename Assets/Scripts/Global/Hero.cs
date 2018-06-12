@@ -210,7 +210,7 @@ namespace Assets.Scripts.Global
             if (Health < 1)
             {
                 GameInfo.EndType = GameEndType.死亡;
-
+                GameInfo.End();
                 return;
             }
 

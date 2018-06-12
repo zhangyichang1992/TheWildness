@@ -137,10 +137,10 @@ namespace Assets.Scripts.Initers
                 GameInfo.ActivedProps.Add(prop);
             }
 
-            for (int i = 0; i < 50; i++)
-            {
-                GameInfo.GainProp(PropName.生锈的铁锤);
-            }
+            //for (int i = 0; i < 50; i++)
+            //{
+            //    GameInfo.GainProp(PropName.生锈的铁锤);
+            //}
 
         }
     }
