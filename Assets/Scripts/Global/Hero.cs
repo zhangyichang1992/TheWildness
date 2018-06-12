@@ -205,7 +205,7 @@ namespace Assets.Scripts.Global
 
         public static void RecoverHealth(float n)
         {
-            Health = Math.Min(MaxHealth, Health + n);
+            Health = Math.Min(MaxHealth, Convert.ToSingle(Math.Round(Convert.ToDouble(Health + n))));
             //死亡
             if (Health < 1)
             {
@@ -219,7 +219,7 @@ namespace Assets.Scripts.Global
 
         public static void RecoverMana(float n)
         {
-            Mana = Math.Min(MaxMana, Mana + n);
+            Mana = Math.Min(MaxMana,Convert.ToSingle(Math.Round(Convert.ToDouble(Mana + n))));
             Mana = Mana < 0 ? 0 : Mana;
             PropertyPanelUpdater.Update();
         }

@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: ede4cad2a73fc74489697d815fe89372
+timeCreated: 1528802978
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: HYXiaoBoDunHei
+  fontNames:
+  - HYXiaoBoDunHei
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

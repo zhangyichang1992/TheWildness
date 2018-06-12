@@ -26,6 +26,7 @@ public class Battle : MonoBehaviour {
             BattleUpdater.UpdateMessage("战斗胜利！\n获得15经验值,15金币");
             GameInfo.Money += 15;
             Hero.GetExp(15);
+            Hero.RecoverHealth(-10);
             GameInfo.NewStage();
         });
         #endregion

@@ -14,6 +14,9 @@ namespace Assets.Scripts.Enums
         巫妖王,
         野蛮人部落,
         商队,
-        神灯
+        神灯,
+        战胜守卫,
+        荒原之主,
+        武馆
     }
 }
