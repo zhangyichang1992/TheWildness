@@ -116,7 +116,8 @@ namespace Assets.Scripts.UI
                     GameInfo.Money -= 100;
                     BattleUpdater.UpdateStageInfo();
                     UpgradeSkillUpdater.ReFresh();
-                    BattleCanvasSetter.SwitchBattleScene(BattleSceneType.UpgradeSkill);
+                    BattleCanvasSetter.Scenes.Enqueue(BattleSceneType.UpgradeSkill);
+                    BattleCanvasSetter.SwitchBattleScene();
                 });
             }
             #endregion
@@ -129,12 +130,12 @@ namespace Assets.Scripts.UI
             var skill3 = SkillHelper.GetRandomVisibleSkill();
             while (skill2.Name == skill1.Name)
             {
-                System.Threading.Thread.Sleep(10);
+                System.Threading.Thread.Sleep(1);
                 skill2 = SkillHelper.GetRandomVisibleSkill();
             }
             while (skill3.Name == skill2.Name || skill3.Name == skill1.Name)
             {
-                System.Threading.Thread.Sleep(10);
+                System.Threading.Thread.Sleep(1);
                 skill3 = SkillHelper.GetRandomVisibleSkill();
             }
 
@@ -142,7 +143,7 @@ namespace Assets.Scripts.UI
                 var price1 = Math.Round(skill1.Price * ratio);
                 btnSkill1.image.color = ColorHelper.GetSkillFrameColor(skill1.Type);
                 imgSkill1.sprite = SpriteHelper.GetSkillIcon(skill1.Name);
-                txtDescSkill1.text = skill1.Description;
+                txtDescSkill1.text = SkillHelper.GetSkillDesc(skill1);
                 txtNameSkill1.text = skill1.DisplayName;
                 txtCostSkill1.text = skill1.Cost.ToString();
                 //如果技能消耗为0
@@ -192,7 +193,7 @@ namespace Assets.Scripts.UI
                 var price2 = Math.Round(skill2.Price * ratio);
                 btnSkill2.image.color = ColorHelper.GetSkillFrameColor(skill2.Type);
                 imgSkill2.sprite = SpriteHelper.GetSkillIcon(skill2.Name);
-                txtDescSkill2.text = skill2.Description;
+                txtDescSkill2.text = SkillHelper.GetSkillDesc(skill2);
                 txtNameSkill2.text = skill2.DisplayName;
                 txtCostSkill2.text = skill2.Cost.ToString();
                 //如果技能消耗为0
@@ -241,7 +242,7 @@ namespace Assets.Scripts.UI
                 var price3 = Math.Round(skill3.Price * ratio);
                 btnSkill3.image.color = ColorHelper.GetSkillFrameColor(skill3.Type);
                 imgSkill3.sprite = SpriteHelper.GetSkillIcon(skill3.Name);
-                txtDescSkill3.text = skill3.Description;
+                txtDescSkill3.text = SkillHelper.GetSkillDesc(skill3);
                 txtNameSkill3.text = skill3.DisplayName;
                 txtCostSkill3.text = skill3.Cost.ToString();
                 //如果技能消耗为0

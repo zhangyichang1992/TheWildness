@@ -49,8 +49,15 @@ namespace Assets.Scripts.Global
         /// 当前层数可能触发的事件列表
         /// </summary>
         public static List<BaseEvent> CurrentStageEvents;
-
+        /// <summary>
+        /// 可用职业
+        /// </summary>
         public static List<BaseHeroRole> HeroRoleList;
+        /// <summary>
+        /// 可用怪物
+        /// </summary>
+        public static List<BaseMonster> Monsters;
+
         /// <summary>
         /// 游戏天数
         /// </summary>
@@ -88,6 +95,8 @@ namespace Assets.Scripts.Global
             SkillIniter.Init(Role);
             //初始化事件信息
             EventIniter.Init();
+            //初始化怪物列表
+            MonsterIniter.Init();
             //初始化职业信息
             HeroRoleIniter.Init();
             //初始化英雄属性
@@ -102,6 +111,8 @@ namespace Assets.Scripts.Global
 
             BattleUpdater.UpdateMessage("欢迎来到荒原之城！");
 
+            BattleCanvasSetter.Scenes.Enqueue(BattleSceneType.ChooseEvent);
+            BattleCanvasSetter.SwitchBattleScene();
             NewStage();
         }
 
@@ -132,7 +143,8 @@ namespace Assets.Scripts.Global
             {
                 BattleUpdater.UpdateEvent(GameEventType.NormalMonster, GameEventType.NormalMonster, GameEventType.NormalMonster);
             }
-            BattleCanvasSetter.SwitchBattleScene(BattleSceneType.ChooseEvent);
+            BattleCanvasSetter.Scenes.Enqueue(BattleSceneType.ChooseEvent);
+            BattleCanvasSetter.SwitchBattleScene();
         }
 
         /// <summary>
@@ -194,9 +206,17 @@ namespace Assets.Scripts.Global
             }
             else
             {
-                skill.Level++;
-                SkillUpdater.UpgradeSkill(skill);
-                BattleUpdater.UpdateMessage("技能 " + skill.DisplayName + " 提升至" + skill.Level.ToString() + "级");
+                if (skill.Level != 3)
+                {
+                    skill.LevelUp();
+                    SkillUpdater.UpgradeSkill(skill);
+                    BattleUpdater.UpdateMessage("技能 " + skill.DisplayName + " 提升至" + skill.Level.ToString() + "级");
+                }
+                else
+                {
+                    Hero.GetExp(15);
+                    BattleUpdater.UpdateMessage("技能已提升至满级，转化为15点经验值");
+                }
             }
         }
 

@@ -15,6 +15,9 @@ namespace Assets.Scripts.Global
         static GameObject Upgrade;
         static GameObject Dialog;
         static GameObject Message;
+        static GameObject Spoil;
+        static GameObject GetSkill;
+        public static Queue<BattleSceneType> Scenes;
         public static void Init()
         {
             Battling = GameObject.Find("SubCanvasBattling");
@@ -23,16 +26,23 @@ namespace Assets.Scripts.Global
             Upgrade = GameObject.Find("SubCanvasUpgrade");
             Dialog = GameObject.Find("SubCanvasDialog");
             Message = GameObject.Find("SubCanvasMessage");
+            Spoil = GameObject.Find("SubCanvasSpoils");
+            GetSkill = GameObject.Find("SubCanvasGetSkill");
+            Scenes = new Queue<BattleSceneType>();
         }
 
-        public static void SwitchBattleScene(BattleSceneType type)
+
+        public static void SwitchBattleScene()
         {
+            var type = Scenes.Dequeue();
             Battling.transform.position = new Vector3(1800, 1800, 0);
             ChooseEvent.transform.position = new Vector3(1800, 1800, 0);
             Shop.transform.position = new Vector3(1800, 1800, 0);
             Upgrade.transform.position = new Vector3(1800, 1800, 0);
             Dialog.transform.position=new Vector3(1800, 1800, 0);
             Message.transform.position = new Vector3(1800, 1800, 0);
+            Spoil.transform.position = new Vector3(1800, 1800, 0);
+            GetSkill.transform.position = new Vector3(1800, 1800, 0);
             switch (type)
             {
                 case BattleSceneType.Battling:
@@ -63,6 +73,16 @@ namespace Assets.Scripts.Global
                 case BattleSceneType.Message:
                     {
                         Message.transform.position = new Vector3(1800, 0, 0);
+                        break;
+                    }
+                case BattleSceneType.Spoil:
+                    {
+                        Spoil.transform.position = new Vector3(1800, 0, 0);
+                        break;
+                    }
+                case BattleSceneType.GetSkill:
+                    {
+                        GetSkill.transform.position = new Vector3(1800, 0, 0);
                         break;
                     }
             }

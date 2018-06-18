@@ -32,5 +32,15 @@ namespace Assets.Scripts.Utility
             var sprite = Resources.Load("Textures/Props/" + name, typeof(Sprite)) as Sprite;
             return sprite;
         }
+
+        public static Sprite GetSkillRareDegreeSprite(SkillRareDegree degree)
+        {
+            Sprite sprite = null;
+            if(degree==SkillRareDegree.Normal)
+                sprite = Resources.Load("Textures/Events/普通技能", typeof(Sprite)) as Sprite;
+            else if(degree==SkillRareDegree.Rare)
+                sprite = Resources.Load("Textures/Events/稀有技能", typeof(Sprite)) as Sprite;
+            return sprite;
+        }
     }
 }

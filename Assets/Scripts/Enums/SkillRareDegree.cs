@@ -7,6 +7,7 @@ namespace Assets.Scripts.Enums
 {
     public enum SkillRareDegree
     {
+        None,
         Normal,
         Rare
     }

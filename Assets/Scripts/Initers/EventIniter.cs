@@ -81,7 +81,8 @@ namespace Assets.Scripts.Initers
                     Hero.RecoverHealth(40);
                     Hero.RecoverMana(10);
                     MessagePageUpdater.Update("一顿忙碌后，终于摘到了不少苹果，并饱餐一顿\n\n回复40点生命值及10点魔法值");
-                    BattleCanvasSetter.SwitchBattleScene(BattleSceneType.Message);
+                    BattleCanvasSetter.Scenes.Enqueue(BattleSceneType.Message);
+                    BattleCanvasSetter.SwitchBattleScene();
                 };
                 e.Choose2 = e.Choose3 = null;
                 GameInfo.EventList.Add(e);
@@ -112,7 +113,8 @@ namespace Assets.Scripts.Initers
                         Hero.MagicArmor += 5;
                         MessagePageUpdater.Update("成功的拆除了陷阱，提升了自身的战斗抗性\n\n增加5点物理防御力与法术防御力");
                     }
-                    BattleCanvasSetter.SwitchBattleScene(BattleSceneType.Message);
+                    BattleCanvasSetter.Scenes.Enqueue(BattleSceneType.Message);
+                    BattleCanvasSetter.SwitchBattleScene();
                 };
                 e.Choose2 = e.Choose3 = null;
                 GameInfo.EventList.Add(e);
@@ -142,7 +144,8 @@ namespace Assets.Scripts.Initers
                     {
                         MessagePageUpdater.Update("虚心请教后，你确实感觉学到了不少东西\n\n" + skillName + "提升一级");
                     }
-                    BattleCanvasSetter.SwitchBattleScene(BattleSceneType.Message);
+                    BattleCanvasSetter.Scenes.Enqueue(BattleSceneType.Message);
+                    BattleCanvasSetter.SwitchBattleScene();
                 };
                 e.Choose2 = () =>
                 {
@@ -159,7 +162,8 @@ namespace Assets.Scripts.Initers
                         BattleUpdater.UpdateStageInfo();
                     }
 
-                    BattleCanvasSetter.SwitchBattleScene(BattleSceneType.Message);
+                    BattleCanvasSetter.Scenes.Enqueue(BattleSceneType.Message);
+                    BattleCanvasSetter.SwitchBattleScene();
                 };
                 e.Choose3 = null;
                 GameInfo.EventList.Add(e);

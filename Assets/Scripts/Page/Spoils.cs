@@ -9,7 +9,7 @@ public class Spoils : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         #region 继续
-        Button btnSkip = GameObject.Find("CanvasSkills/BtnSkip").GetComponent<Button>();
+        Button btnSkip = GameObject.Find("SubCanvasSpoils/BtnSkip").GetComponent<Button>();
         btnSkip.onClick.AddListener(delegate ()
         {
             GameInfo.NewStage();

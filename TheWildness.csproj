@@ -15,6 +15,7 @@
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
     <CompilerResponseFile>
     </CompilerResponseFile>
+    <UnityProjectGenerator>VSTU</UnityProjectGenerator>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.6.0f3</UnityVersion>
@@ -52,37 +53,38 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Networking">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TestRunner">
-      <HintPath>Library\UnityAssemblies\UnityEngine.TestRunner.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>Library\UnityAssemblies\nunit.framework.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Analytics">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Analytics.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.HoloLens">
-      <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VR">
-      <HintPath>Library\UnityAssemblies\UnityEngine.VR.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Base\BaseEvent.cs" />
     <Compile Include="Assets\Scripts\Base\BaseHeroRole.cs" />
     <Compile Include="Assets\Scripts\Base\BaseMonster.cs" />
+    <Compile Include="Assets\Scripts\Base\BaseMonsterSkill.cs" />
     <Compile Include="Assets\Scripts\Base\BaseProp.cs" />
     <Compile Include="Assets\Scripts\Base\BaseSkill.cs" />
     <Compile Include="Assets\Scripts\Battle\UseSkill.cs" />
@@ -98,10 +100,14 @@
     <Compile Include="Assets\Scripts\Enums\BattleSceneType.cs" />
     <Compile Include="Assets\Scripts\Enums\BuffEffectWay.cs" />
     <Compile Include="Assets\Scripts\Enums\BuffType.cs" />
+    <Compile Include="Assets\Scripts\Enums\DamageType.cs" />
     <Compile Include="Assets\Scripts\Enums\DebuffType.cs" />
     <Compile Include="Assets\Scripts\Enums\GameEndType.cs" />
     <Compile Include="Assets\Scripts\Enums\GameEventType.cs" />
     <Compile Include="Assets\Scripts\Enums\HeroRole.cs" />
+    <Compile Include="Assets\Scripts\Enums\MonsterName.cs" />
+    <Compile Include="Assets\Scripts\Enums\MonsterSkillName.cs" />
+    <Compile Include="Assets\Scripts\Enums\MonsterType.cs" />
     <Compile Include="Assets\Scripts\Enums\PropName.cs" />
     <Compile Include="Assets\Scripts\Enums\PropType.cs" />
     <Compile Include="Assets\Scripts\Enums\RandomEvent.cs" />
@@ -109,6 +115,7 @@
     <Compile Include="Assets\Scripts\Enums\SkillName.cs" />
     <Compile Include="Assets\Scripts\Enums\SkillRareDegree.cs" />
     <Compile Include="Assets\Scripts\Enums\SkillType.cs" />
+    <Compile Include="Assets\Scripts\Global\Battle.cs" />
     <Compile Include="Assets\Scripts\Global\BattleCanvasSetter.cs" />
     <Compile Include="Assets\Scripts\Global\CameraSetter.cs" />
     <Compile Include="Assets\Scripts\Global\GameInfo.cs" />
@@ -122,6 +129,7 @@
     <Compile Include="Assets\Scripts\Listener\KeyboardListener.cs" />
     <Compile Include="Assets\Scripts\Page\Battle.cs" />
     <Compile Include="Assets\Scripts\Page\End.cs" />
+    <Compile Include="Assets\Scripts\Page\GetSkill.cs" />
     <Compile Include="Assets\Scripts\Page\MessagePage.cs" />
     <Compile Include="Assets\Scripts\Page\Props.cs" />
     <Compile Include="Assets\Scripts\Page\Shop.cs" />
@@ -130,6 +138,7 @@
     <Compile Include="Assets\Scripts\UI\BattleUpdater.cs" />
     <Compile Include="Assets\Scripts\UI\DialogUpdater.cs" />
     <Compile Include="Assets\Scripts\UI\EndPageUpdater.cs" />
+    <Compile Include="Assets\Scripts\UI\GetSkillUpdater.cs" />
     <Compile Include="Assets\Scripts\UI\HeroSliderUpdater.cs" />
     <Compile Include="Assets\Scripts\UI\HeroStatusUpdater.cs" />
     <Compile Include="Assets\Scripts\UI\MessagePageUpdater.cs" />
@@ -142,6 +151,7 @@
     <Compile Include="Assets\Scripts\Utility\ButtonHelper.cs" />
     <Compile Include="Assets\Scripts\Utility\ColorHelper.cs" />
     <Compile Include="Assets\Scripts\Utility\EventHelper.cs" />
+    <Compile Include="Assets\Scripts\Utility\MonsterHelper.cs" />
     <Compile Include="Assets\Scripts\Utility\NumberHelper.cs" />
     <Compile Include="Assets\Scripts\Utility\PropHelper.cs" />
     <Compile Include="Assets\Scripts\Utility\SkillHelper.cs" />

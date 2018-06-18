@@ -50,7 +50,7 @@ namespace Assets.Scripts.UI
 
             //修改技能描述
             Text skillDesc = GameObject.Find("CanvasSkills/ScrollView/Viewport/Content/" + skill.DisplayName + "/TxtDesc").GetComponent<Text>();
-            skillDesc.text = skill.Description;
+            skillDesc.text =SkillHelper.GetSkillDesc(skill);
 
             //修改技能名称
             Text skillName = GameObject.Find("CanvasSkills/ScrollView/Viewport/Content/" + skill.DisplayName + "/TxtName").GetComponent<Text>();

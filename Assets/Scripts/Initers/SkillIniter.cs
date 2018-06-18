@@ -43,14 +43,26 @@ namespace Assets.Scripts.Initers
                 skill.DisplayName = "挥击";
                 skill.Name = SkillName.挥击;
                 skill.Type = SkillType.None;
-                skill.SkillRatio = 40;
+                skill.RareDegree = SkillRareDegree.Normal;
+                skill.DamageType = DamageType.Physical;
+                skill.BaseDamage = 5;
+                skill.SkillRatio = 20;
                 skill.Level = 0;
                 skill.Price = 50;
                 skill.Cost = 0;
-                skill.Description = "造成100%物理伤害";
-                skill.DescriptionLevel1 = "额外造成20%物理伤害";
-                skill.DescriptionLevel2 = "额外造成20%物理伤害";
+                skill.Startup = 4;
+                skill.Description = "";
+                skill.DescriptionLevel1 = "基础伤害 + 3";
+                skill.DescriptionLevel2 = "技能加成提升20%";
                 skill.DescriptionLevel3 = "在一局对战中，每释放四次此技能获得一层精湛";
+                skill.LevelUp = () =>
+                {
+                    skill.Level++;
+                    if (skill.Level == 1)
+                        skill.BaseDamage += 3;
+                    else if (skill.Level == 2)
+                        skill.SkillRatio += 20;
+                };
                 GameInfo.ActivedSkills.Add(skill);
             }
 
@@ -59,14 +71,26 @@ namespace Assets.Scripts.Initers
                 skill.DisplayName = "重击";
                 skill.Name = SkillName.重击;
                 skill.Type = SkillType.Fire;
-                skill.SkillRatio = 10;
+                skill.RareDegree = SkillRareDegree.Normal;
+                skill.DamageType = DamageType.Physical;
+                skill.BaseDamage = 8;
+                skill.SkillRatio = 40;
                 skill.Level = 0;
                 skill.Price = 70;
                 skill.Cost = 0;
-                skill.Description = "造成100%物理伤害，给与对手一层易伤";
-                skill.DescriptionLevel1 = "额外造成20%物理伤害";
-                skill.DescriptionLevel2 = "回复2点生命值";
-                skill.DescriptionLevel3 = "额外造成30%物理伤害";
+                skill.Startup = 2;
+                skill.Description = "给与对手一层易伤";
+                skill.DescriptionLevel1 = "基础伤害 + 5";
+                skill.DescriptionLevel2 = "技能加成提升40%";
+                skill.DescriptionLevel3 = "回复8点生命值";
+                skill.LevelUp = () =>
+                {
+                    skill.Level++;
+                    if (skill.Level == 1)
+                        skill.BaseDamage += 5;
+                    else if (skill.Level == 2)
+                        skill.SkillRatio += 40;
+                };
                 GameInfo.ActivedSkills.Add(skill);
             }
 
@@ -75,14 +99,109 @@ namespace Assets.Scripts.Initers
                 skill.DisplayName = "裂地斩";
                 skill.Name = SkillName.裂地斩;
                 skill.Type = SkillType.Pure;
-                skill.SkillRatio = 40;
+                skill.RareDegree = SkillRareDegree.Normal;
+                skill.DamageType = DamageType.Magic;
+                skill.BaseDamage = 6;
+                skill.SkillRatio = 50;
                 skill.Level = 0;
                 skill.Price = 60;
                 skill.Cost = 2;
-                skill.Description = "造成80%物理伤害，给与对手一层涣散";
-                skill.DescriptionLevel1 = "额外造成20%物理伤害";
-                skill.DescriptionLevel2 = "给与对手一层脆弱";
-                skill.DescriptionLevel3 = "魔法消耗减2";
+                skill.Startup = 2;
+                skill.Description = "给与对手一层寒冷";
+                skill.DescriptionLevel1 = "技能消耗 - 2";
+                skill.DescriptionLevel2 = "技能加成提升50%";
+                skill.DescriptionLevel3 = "给与对手一层涣散";
+                skill.LevelUp = () =>
+                {
+                    skill.Level++;
+                    if (skill.Level == 1)
+                        skill.Cost -= 2;
+                    else if (skill.Level == 2)
+                        skill.SkillRatio += 50;
+                };
+                GameInfo.ActivedSkills.Add(skill);
+            }
+
+            {
+                var skill = new BaseSkill();
+                skill.DisplayName = "神圣之力";
+                skill.Name = SkillName.神圣之力;
+                skill.Type = SkillType.Holy;
+                skill.RareDegree = SkillRareDegree.Rare;
+                skill.DamageType = DamageType.None;
+                skill.BaseDamage = 0;
+                skill.SkillRatio = 0;
+                skill.Level = 0;
+                skill.Price = 160;
+                skill.Cost = 8;
+                skill.Startup = 1;
+                skill.Description = "获得一层不死";
+                skill.DescriptionLevel1 = "技能消耗 - 3";
+                skill.DescriptionLevel2 = "回复最大生命值的15%";
+                skill.DescriptionLevel3 = "发动系数提升 1";
+                skill.LevelUp = () =>
+                {
+                    skill.Level++;
+                    if (skill.Level == 1)
+                        skill.Cost -= 3;
+                    else if (skill.Level == 3)
+                        skill.Startup += 1;
+                };
+                GameInfo.ActivedSkills.Add(skill);
+            }
+
+            {
+                var skill = new BaseSkill();
+                skill.DisplayName = "寒冰之心";
+                skill.Name = SkillName.寒冰之心;
+                skill.Type = SkillType.Pure;
+                skill.RareDegree = SkillRareDegree.Rare;
+                skill.DamageType = DamageType.None;
+                skill.BaseDamage = 0;
+                skill.SkillRatio = 0;
+                skill.Level = 0;
+                skill.Price = 160;
+                skill.Cost = 4;
+                skill.Startup = 1;
+                skill.Description = "获得一层护盾";
+                skill.DescriptionLevel1 = "启动一个技能";
+                skill.DescriptionLevel2 = "获得一层启迪，获得一层石肤";
+                skill.DescriptionLevel3 = "发动系数提升 1";
+                skill.LevelUp = () =>
+                {
+                    skill.Level++;
+                    if (skill.Level == 3)
+                        skill.Startup += 1;
+                };
+                GameInfo.ActivedSkills.Add(skill);
+            }
+
+
+            {
+                var skill = new BaseSkill();
+                skill.DisplayName = "灵界打击";
+                skill.Name = SkillName.灵界打击;
+                skill.Type = SkillType.Shadow;
+                skill.RareDegree = SkillRareDegree.Rare;
+                skill.DamageType = DamageType.Magic;
+                skill.BaseDamage = 18;
+                skill.SkillRatio = 120;
+                skill.Level = 0;
+                skill.Price = 160;
+                skill.Cost = 4;
+                skill.Startup = 1;
+                skill.Description = "回复10点生命值";
+                skill.DescriptionLevel1 = "技能加成提升120%";
+                skill.DescriptionLevel2 = "给与对手一层萎靡";
+                skill.DescriptionLevel3 = "发动系数提升 1";
+                skill.LevelUp = () =>
+                {
+                    skill.Level++;
+                    if (skill.Level == 1)
+                        skill.SkillRatio += 120;
+                    else if (skill.Level == 3)
+                        skill.Startup += 1;
+                };
                 GameInfo.ActivedSkills.Add(skill);
             }
             #endregion

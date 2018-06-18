@@ -25,6 +25,10 @@ namespace Assets.Scripts.Enums
         //商店
         Shop,
         //信息通知
-        Message
+        Message,
+        //战利品
+        Spoil,
+        //获取技能
+        GetSkill
     }
 }

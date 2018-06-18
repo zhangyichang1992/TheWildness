@@ -115,7 +115,8 @@ namespace Assets.Scripts.UI
                     {
                         GameInfo.CurrentBattleScene = BattleSceneType.Shop;
                         ShopUpdater.Refresh();
-                        BattleCanvasSetter.SwitchBattleScene(BattleSceneType.Shop);
+                        BattleCanvasSetter.Scenes.Enqueue(BattleSceneType.Shop);
+                        BattleCanvasSetter.SwitchBattleScene();
                         break;
                     }
                 case GameEventType.Treasure:
@@ -125,7 +126,8 @@ namespace Assets.Scripts.UI
                         GameInfo.GainProp(prop.Name);
                         EventHelper.GeneratePropEvent(e, prop.Name);
                         DialogUpdater.Refresh(e);
-                        BattleCanvasSetter.SwitchBattleScene(BattleSceneType.EventDialog);
+                        BattleCanvasSetter.Scenes.Enqueue(BattleSceneType.EventDialog);
+                        BattleCanvasSetter.SwitchBattleScene();
                         break;
                     }
                 case GameEventType.Hotel:
@@ -133,7 +135,8 @@ namespace Assets.Scripts.UI
                         GameInfo.CurrentBattleScene = BattleSceneType.EventDialog;
                         EventHelper.GenerateHotelEvent(e);
                         DialogUpdater.Refresh(e);
-                        BattleCanvasSetter.SwitchBattleScene(BattleSceneType.EventDialog);
+                        BattleCanvasSetter.Scenes.Enqueue(BattleSceneType.EventDialog);
+                        BattleCanvasSetter.SwitchBattleScene();
                         break;
                     }
                 case GameEventType.RandomEvent:
@@ -143,16 +146,18 @@ namespace Assets.Scripts.UI
                         DialogUpdater.Refresh(randomE);
                         //如果队列中没有可用事件，则直接触发商店事件
                         if (randomE.Type == GameEventType.RandomEvent)
-                            BattleCanvasSetter.SwitchBattleScene(BattleSceneType.EventDialog);
+                            BattleCanvasSetter.Scenes.Enqueue(BattleSceneType.EventDialog);
                         else
-                            BattleCanvasSetter.SwitchBattleScene(BattleSceneType.Shop);
+                            BattleCanvasSetter.Scenes.Enqueue(BattleSceneType.Shop);
+                        BattleCanvasSetter.SwitchBattleScene();
                         break;
                     }
                 //case GameEventType.
                 default:
                     {
                         GameInfo.CurrentBattleScene = BattleSceneType.Battling;
-                        BattleCanvasSetter.SwitchBattleScene(BattleSceneType.Battling);
+                        BattleCanvasSetter.Scenes.Enqueue(BattleSceneType.Battling);
+                        BattleCanvasSetter.SwitchBattleScene();
                         break;
                     }
             }
